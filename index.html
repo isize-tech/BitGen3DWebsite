@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="BitGen 3D">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BitGen 3D</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/bulma.min.css">
+  <link rel="stylesheet" href="./css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="icon" href="./images/favicon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">BitGen 3D </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Alexis Lechat,</span>
+            <span class="author-block">Shakarim Soltanayev,</span>
+            <span class="author-block">Odysseas Zisimopoulos,</span>
+            <span class="author-block">Jia-Jie Lim,</span><br>
+            <span class="author-block">Matthias Treder,</span>
+            <span class="author-block">Sebastian Lutz,</span>
+            <span class="author-block">Yiannis Andreapoulos</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block" style="font-weight: 800;">iSize Ltd.</span>
+          </div>
+
+          <div class="column has-text-centered publication-links">
+
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://www.nvidia.com/gtc/"
+                   class="external-link button is-normal is-rounded is-dark"
+                   target="_blank">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>GTC Link [TODO]</span>
+                  </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <!-- <div class="column is-full-width"> -->
+        <div class="column is-four-fifths">
+
+        <!-- Faithful reconstruction. -->
+        <h3 class="title is-3">Faithful reconstruction of 3D geometry</h3>
+        <div class="content has-text-justified">
+          <p>
+            <span class="dnerf">BitGen 3D</span> performs a faithful neural reconstruction of the full 3D geometry of a scene. 
+            It is trained on a few images captured using a conventional phone. Any other information such as the camera parameters 
+            can be inferred automatically. The resultant rendering is almost indistinguishable from the real video.
+          </p>
+
+            <center>
+            <span style="font-weight: bold; align-items: center;">Real video</span><span style="font-weight: bold; align-items: center; margin-left: 210px;"> Reconstruction</span>
+            </center>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                  controls
+                  muted
+                  preload
+                  playsinline
+                  width="75%">
+            <source 
+                    src="./videos/shakarim_side_by_side.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!--/ Faithful reconstruction. -->
+
+        <!-- Foreground background -->
+        <h2 class="title is-4">Foreground background separation</h2>
+        <div class="content has-text-justified">
+          <p>
+            <span class="dnerf">BitGen 3D</span> infers the intrinsic 3D geometry of the depicted scene, the objects and their decomposition.
+            Therefore, it learns to separate the foreground avatar from the background.<br>
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <!-- <iframe src="https://www.dropbox.com/s/5lajit1hl56wh1l/foreground_background_split.mp4"
+          width="1440px" height="720" allowfullscreen 
+          ></iframe> -->
+          
+          <video id="replay-video"
+                  controls
+                  muted
+                  preload
+                  playsinline
+                  width="75%">
+            <source 
+                    src="./videos/foreground_background_split.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!--/ Foreground background. -->
+
+        <!-- Full body -->
+        <h2 class="title is-4">Full body avatar</h2>
+        <div class="content has-text-justified">
+          <p>
+            We currently focus on head avatars for video conferencing and metaverse applications, but 
+            <span class="dnerf">BitGen 3D</span> is not limited to the upper torso. It can learn an accurate representation of the full body.<br>
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                  controls
+                  muted
+                  preload
+                  playsinline
+                  width="75%">
+            <source 
+                    src="./videos/full_body.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!--/ Full body -->
+
+        <!-- Current benchmarks -->
+        <h2 class="title is-4">Current benchmarks</h2>
+        <div class="content has-text-justified">
+          <ul>
+            <li>512x512 images @ 5 FPS</li>
+            <li>Using NVIDIA tinycuda framework</li>
+            <li>GPU utilization: 70%, using ~5GB of VRAM @ NVIDIA RTX 3090</li>
+            <li>Quality (viewpoints < 10 degrees)</li>
+            <li>LPIPS: ~0.1  @ 512p</li>
+            <li>Next steps: Maintain high quality, further optimize compute efficiency and inference speed</li>
+          </ul>
+        </div>
+        <!--/ Current benchmarks -->
+
+         <!-- WebApp -->
+        <h2 class="title is-4">Web application</h2>
+        <div class="content has-text-justified">
+          <p>Try the avatars out yourself in our <a href="">BitGen 3D static web app [TODO: add link]</a>!
+            Note that a WebGPU compatible browser is required.
+          </p>
+        </div>
+        <!--/ WebApp -->
+
+        <!-- Dynamic avatar -->
+        <h2 class="title is-3">Towards dynamic avatars</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our approach is currently being extended to a dynamic avatar that mimics the whole range of facial expressions.
+            A low-dimensional expression vector on the sender side represents the head pose, emotion, position of eye pupil etc. 
+            Warp coefficients transform the avatar into the desired target pose. 
+            Different head poses and facial expressions are realised by changing the expression vector and recomputing the warp coefficients. 
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./images/bitgen3d_dynamic_flowchart.png" width="1194" height="600"  />
+        </div>
+        <!--/ Dynamic avatar -->
+      </div>
+    </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
